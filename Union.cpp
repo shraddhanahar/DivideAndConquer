@@ -1,0 +1,78 @@
+#include<iostream>
+using namespace std;
+
+void display(int a[],int i,int n)                     // display array function
+    {
+        for(i=1;i<=n;i++)
+        {
+        cout<<"\t"<<a[i];
+        }
+    }
+    
+
+int mergealgo(int a[],int b[],int c[],int start1,int start2,int end1,int end2)      // Merge algorithm definition as two sorted arrays are accepted
+{
+    int index=1,i=1,j=1;
+      
+        while(i<=end1 && j <= end2)                      
+        {   
+             if(a[i]<b[j])
+            {  c[index]=a[i];i++; index++;}
+           
+             if(a[i]>b[j])
+            {  c[index]=b[j];j++; index++;}
+           
+            if(a[i]==b[j])
+            {  c[index]=a[i];i++;j++;index++; }            
+           
+        }                                                      //timeComplexity min(end1,end2)
+         if(i>end1)
+        {
+            while(j<=end2)
+            { c[index]=b[j]; index++; j++; }
+        }                                                     //timeComplexity number(remaining elements) 
+          else
+        {
+            while(i<=end1)
+            { c[index]=a[i]; index++; i++; }
+        }         
+        index=index-1;   
+        return index;                    
+}    
+
+
+
+
+int main()
+{
+int a[100],b[100],c[200],n,m,i,total;
+
+    cout<<"Enter size of first array :\t";
+    cin>>n;
+    cout<<"Enter size of second array :\t";
+    cin>>m;
+        
+                                /* #####AcceptSortedArrays##### */ 
+    cout<<"Enter elements for first array:\n";
+    for(int i=1 ;i<=n;i++)
+    {
+    cin>>a[i];
+    }
+    cout<<"Enter elements for second array:\n";
+    for(int i=1 ;i<=m;i++)
+    {
+    cin>>b[i];
+    }
+                               /* #####BeforeUnion##### */                                     
+    cout<<"Elements before union :\n"; 
+    cout<<"First Array:\n" ;  
+    display(a,1,n);
+    cout<<"\nSecond Array:\n" ;  
+    display(b,1,m);
+    
+                               /* #####Merge##### */             
+    total=mergealgo(a,b,c,1,1,n,m);
+                               /* #####AfterUnion##### */ 
+    cout<<"\nElements after union are :\n";     
+     display(c,1,total);
+}
