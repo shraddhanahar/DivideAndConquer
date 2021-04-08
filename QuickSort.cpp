@@ -16,7 +16,7 @@ using namespace std;
 
     void QuickSort(int a[],int start,int end)            // QuickSort 
     {   
-        int m,x,y,p=start,q=end,i;      
+        int m,p=start,q=end,i;      
         if(p<q) 
         {
             m=Partition(a,p,q);                          // Meaningful divide
