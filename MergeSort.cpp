@@ -76,7 +76,7 @@ int a[100],n,i;
     cout<<"Elements before sorting are :\n";    
     display(a,1,n);
                                /* #####MergeSort##### */             
-    merge(a,1,n);
+    mergeSort(a,1,n);
                                /* #####AfterSorting##### */ 
     cout<<"\nElements after sorting are :\n";    
     display(a,1,n);   
